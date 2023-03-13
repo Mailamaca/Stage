@@ -16,7 +16,7 @@ OPTION (BUILD_LSPTEST "Build Player plugin tests" OFF)
 OPTION (CPACK_CFG "[release building] generate CPack configuration files" ON)
 
 # todo - this doesn't work yet. Run Stage headless with -g.
-# OPTION (BUILD_GUI "Build FLTK-based GUI. If OFF, build a gui-less Stage useful e.g. for headless compute clusters." ON ) 
+# OPTION (BUILD_GUI "Build FLTK-based GUI. If OFF, build a gui-less Stage useful e.g. for headless compute clusters." ON )
 
 IF (CMAKE_MAJOR_VERSION EQUAL 2 AND NOT CMAKE_MINOR_VERSION LESS 6)
 	cmake_policy( SET CMP0003 NEW )
@@ -59,7 +59,7 @@ SET (CMAKE_CXX_FLAGS_PROFILE "-ggdb -pg  ${FORCE_ARCH} ${WALL}" CACHE INTERNAL "
 #####################################
 # Set the default build type
 IF (NOT CMAKE_BUILD_TYPE)
-  SET (CMAKE_BUILD_TYPE "release" CACHE STRING 
+  SET (CMAKE_BUILD_TYPE "release" CACHE STRING
     "Choose the type of build, options are: release (default) debug profile" FORCE)
 ENDIF (NOT CMAKE_BUILD_TYPE)
 STRING(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE)
@@ -72,14 +72,14 @@ SET(RGBFILE ${CMAKE_INSTALL_PREFIX}/share/stage/rgb.txt )
 
 # Create the config.h file
 # config.h belongs with the source (and not in CMAKE_CURRENT_BINARY_DIR as in Brian's original version)
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in 
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
 					${CMAKE_CURRENT_SOURCE_DIR}/config.h @ONLY)
 
 message( STATUS "Checking for libtool" )
 find_path( LTDL_INCLUDE_DIR ltdl.h DOC "Libtool include dir" )
 find_library( LTDL_LIB ltdl DOC "Libtool lib" )
 
-include_directories( 
+include_directories(
 	${OPENGL_INCLUDE_DIR}
 	${LTDL_INCLUDE_DIR}
 )
@@ -96,7 +96,7 @@ find_package( PNG REQUIRED )
 # SET( PNG_LIBRARIES /opt/X11/lib/libpng.dylib )
 # SET( PNG_INCLUDE_DIR /opt/X11/include )
 
-set (FLTK_SKIP_FLUID TRUE) 
+set (FLTK_SKIP_FLUID TRUE)
 find_package( FLTK REQUIRED )
 find_package( OpenGL REQUIRED )
 
@@ -106,9 +106,9 @@ ENDIF( NOT OPENGL_GLU_FOUND )
 
 SET( INDENT "  * " )
 # MESSAGE( STATUS ${INDENT} "JPEG_INCLUDE_DIR = ${JPEG_INCLUDE_DIR}" )
-# MESSAGE( STATUS ${INDENT} "JPEG_LIBRARIES = ${JPEG_LIBRARIES}" ) 
+# MESSAGE( STATUS ${INDENT} "JPEG_LIBRARIES = ${JPEG_LIBRARIES}" )
 # MESSAGE( STATUS ${INDENT} "PNG_INCLUDE_DIR = ${PNG_INCLUDE_DIR}" )
-# MESSAGE( STATUS ${INDENT} "PNG_LIBRARIES = ${PNG_LIBRARIES}" ) 
+# MESSAGE( STATUS ${INDENT} "PNG_LIBRARIES = ${PNG_LIBRARIES}" )
 # MESSAGE( STATUS ${INDENT} "FLTK_LIBRARIES=${FLTK_LIBRARIES}" )
 # MESSAGE( STATUS ${INDENT} "FLTK_INCLUDE_DIR=${FLTK_INCLUDE_DIR}" )
 # MESSAGE( STATUS ${INDENT} "OpenGL GLU found at ${OPENGL_INCLUDE_DIR}" )
@@ -140,9 +140,9 @@ INSTALL (FILES ${CMAKE_CURRENT_BINARY_DIR}/stage.pc DESTINATION ${PROJECT_LIB_DI
 MESSAGE( STATUS "Installation path CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" )
 
 # all targets need these include directories
-include_directories( . 
-		     libstage 
-		     replace 
+include_directories( .
+		     libstage
+		     replace
 		     ${FLTK_INCLUDE_DIR}
                      ${PNG_INCLUDE_DIR}
                      ${JPEG_INCLUDE_DIR}
@@ -155,12 +155,12 @@ ADD_SUBDIRECTORY(libstage)
 ADD_SUBDIRECTORY(examples)
 ADD_SUBDIRECTORY(assets)
 ADD_SUBDIRECTORY(worlds)
-#ADD_SUBDIRECTORY(avonstage)		 
+#ADD_SUBDIRECTORY(avonstage)
 
 IF ( BUILD_PLAYER_PLUGIN )
   # Player does not have a CMake package, but does provide pkgconfig info
   include(FindPkgConfig)
-  pkg_search_module( PLAYER playercore>=2.1.0 ) 
+  pkg_search_module( PLAYER playercore>=2.1.0 )
   IF( PLAYER_FOUND )
     MESSAGE( STATUS ${INDENT} "Player version ${PLAYER_VERSION} detected at ${PLAYER_PREFIX}" )
     MESSAGE( STATUS "    PLAYER_CFLAGS: ${PLAYER_CFLAGS}" )
