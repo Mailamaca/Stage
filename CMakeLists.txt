@@ -1,5 +1,5 @@
-cmake_minimum_required( VERSION 2.8.7 FATAL_ERROR )
-PROJECT(Stage)
+cmake_minimum_required( VERSION 3.12 FATAL_ERROR )
+PROJECT(stage)
 
 SET( V_MAJOR 4 )
 SET( V_MINOR 3 )
@@ -86,6 +86,8 @@ include_directories(
 
 
 MESSAGE( STATUS "Checking for required libraries..." )
+
+find_package(ament_cmake)
 
 find_package( JPEG REQUIRED )
 
@@ -208,3 +210,8 @@ IF ( CPACK_CFG )
   SET(CPACK_PACKAGE_INSTALL_DIRECTORY "${PROJECT_NAME}-${V_MAJOR}.${V_MINOR}")
   INCLUDE(CPack)
 ENDIF ( CPACK_CFG )
+
+IF(${ament_cmake_FOUND})
+  # If ament is found compile stage as ros package.
+  ament_package()
+ENDIF (${ament_cmake_FOUND})
