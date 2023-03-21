@@ -6,3 +6,4 @@ config.h
 .DS_Store
 docsrc/stage
 *.txt.user
+**/**/compile_commands.json
