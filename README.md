@@ -1,8 +1,9 @@
 # The Stage Simulator
-This is the Stage README file, containing an introduction, license and citation information. Stage is a 2(.5)D robotics standalone simulator and can also be used as a C++ library to build your own simulation environment. Up-to-date **documentation can be found [here](https://codedocs.xyz/CodeFinder2/Stage/)**.
+This is the Stage README file, containing an introduction, license and citation information.
+Stage is a 2(.5)D robotics standalone simulator and can also be used as a C++ library to build your
+own simulation environment.
 
 For release notes see RELEASE.txt
-For installation notes see INSTALL.txt
 
 Copyright Richard Vaughan and contributors 1998-2011
 Part of the Player Project (http://playerstage.org)
@@ -32,10 +33,7 @@ to sense and manipulate.
 There are three ways to use Stage:
   1. The "stage" program: a standalone robot simulation program
 that loads your robot control program from a library that you provide.
-  2. The Stage plugin for Player (libstageplugin) - provides a
-population of virtual robots for the popular Player networked robot
-interface system.
-  3. Write your own simulator: the "libstage" C++ library makes it
+  2. Write your own simulator: the "libstage" C++ library makes it
 easy to create, run and customize a Stage simulation from inside your
 own programs.
 
@@ -67,7 +65,8 @@ with Stage.
 
 
 # Citations
-If you use Stage in your work, we'd appreciate a citation. At the time of writing, the most suitable reference is either:
+If you use Stage in your work, we'd appreciate a citation. At the time of writing, the most suitable
+ reference is either:
 - Richard Vaughan. "Massively Multiple Robot Simulations in Stage", Swarm Intelligence 2(2-4):189-208, 2008. Springer, [download PDF](http://autonomylab.org/doc/vaughan_si08.pdf)
 
 Or, if you are using Player/Stage:
@@ -80,7 +79,8 @@ called "Player". Player and Stage used together are referred to as
 without Player, it's just called "Stage". When the Stage library is
 used to create your own custom simulator, it's called "libstage" or
 "the Stage library". When Player is used with its 3D ODE-based
-simulation backend, Gazebo, it's called Player/Gazebo. Gazebo without Player is just "Gazebo". All this software is part of the "Player Project".
+simulation backend, Gazebo, it's called Player/Gazebo. Gazebo without Player is just "Gazebo".
+All this software is part of the "Player Project".
 
 # Support
 Funding for Stage has been provided in part by:
@@ -96,7 +96,7 @@ Names
 -----
 The names "Player" and "Stage" were inspired by the lines:
 
-  > All the world's a stage,  
+  > All the world's a stage,
   > And all the men and women merely players
 
 from "As You Like It" by William Shakespeare.

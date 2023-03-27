@@ -2,7 +2,13 @@
 <package>
   <name>stage</name>
   <version>4.3.0</version>
-  <description>Mobile robot simulator https://codedocs.xyz/CodeFinder2/Stage/md_README.html</description>
+  <description>
+    Stage simulates a population of mobile robots, sensors and objects in
+    a two-dimensional bitmapped environment. Stage is designed to support
+    research into multi-agent autonomous systems, so it provides fairly
+    simple, computationally cheap models of lots of devices rather than
+    attempting to emulate any device with great fidelity
+  </description>
 
   <maintainer email="valerio.magnago@gmail.com">Valerio Magnago</maintainer>
 
