@@ -7,3 +7,5 @@ config.h
 docsrc/stage
 *.txt.user
 **/**/compile_commands.json
+**/**/.cache
+
