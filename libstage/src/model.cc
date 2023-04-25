@@ -378,7 +378,7 @@ void Model::LoadBlock(Worldfile *wf, int entity)
 void Model::AddBlockRect(meters_t x, meters_t y, meters_t dx, meters_t dy, meters_t dz)
 {
   //UnMap();
-    
+
   std::vector<point_t> pts(4);
   pts[0].x = x;
   pts[0].y = y;
@@ -395,7 +395,7 @@ void Model::AddBlockRect(meters_t x, meters_t y, meters_t dx, meters_t dy, meter
   // Block& tail = blockgroup.blocks.back();
   // tail.Map(0);
   // tail.Map(1);
-   
+
   //Map();
 }
 
@@ -1301,22 +1301,19 @@ void Model::Load()
 
   std::string name = wf->ReadString(wf_entity, "name", token);
 
-  // if the first character of the string is a /, the name is in the
-  // global namespace, otherwise it's in the parent's namespace.
-  if (name != token)
-    {
-      if( name[0] == '/' )		
-	SetToken( name.substr( 1, std::string::npos ) ); // global namespace
-      else
-	{
-	  if( parent )
-	    name = parent->token + "." + name;	  
-
-	  SetToken( name  ); // parent's namespace
-	}
+  // if the first character of the string is a ~, the name is in the
+  // parent's namespace, otherwise it's in the global namespace.
+  if (name != token) {
+    if (name[0] == '~'){
+      if (parent){
+        name = parent->token + "/" + name.substr( 1, std::string::npos );
+      }
+      SetToken(name); // parent's namespace
+    } else {
+      SetToken(name); // global namespace
     }
-		    
-		  
+  }
+
   // PRINT_WARN1( "%s::Load", token );
 
   Geom g(GetGeom());
